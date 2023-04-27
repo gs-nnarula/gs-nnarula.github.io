@@ -1,0 +1,25 @@
+<div class="px-contact-container">
+    <div class="px-contact-radio form-check form-check-inline">
+        <input (change)="selectionChange('CONTACTS')" class="form-check-input" type="radio" name="inlineRadioOptions"
+            id="inlineRadio1" value="CONTACTS" checked>
+        <label class="form-check-label" for="inlineRadio1">CONTACTS</label>
+    </div>
+    <div class="form-check form-check-inline">
+        <input (change)="selectionChange('HELP')" class="form-check-input" type="radio" name="inlineRadioOptions"
+            id="inlineRadio2" value="HELP">
+        <label class="form-check-label" for="inlineRadio2">HELP</label>
+    </div>
+
+    <ul *ngIf="selectedOption === 'CONTACTS'" class="list-group">
+        <li class="list-group-item">Contact 1 - ABC</li>
+        <li class="list-group-item">Contact 2 - DEF</li>
+        <li class="list-group-item">Instagram</li>
+        <li class="list-group-item">Facebook</li>
+        <li class="list-group-item">Twitter</li>
+    </ul>
+
+    <ul *ngIf="selectedOption === 'HELP'" class="list-group">
+        <li class="list-group-item">FAQ - 1</li>
+        <li class="list-group-item">FAQ - 2</li>
+    </ul>
+</div>
