@@ -1,6 +1,5 @@
 import { CommonModule } from "@angular/common";
 import { NgModule } from "@angular/core";
-import { RouterModule } from "@angular/router";
 import { ContactComponent } from "./contact.component";
 
 @NgModule({
@@ -8,10 +7,7 @@ import { ContactComponent } from "./contact.component";
         ContactComponent
     ],
     imports: [
-        CommonModule,
-        RouterModule.forChild([
-            { path: "", component: ContactComponent }
-          ]),
+        CommonModule
     ],
     exports: [
         ContactComponent

@@ -1,5 +1,4 @@
 import { NgModule } from "@angular/core";
-import { RouterModule } from "@angular/router";
 import { HomeComponent } from "./home.component";
 import { DragDropModule } from "@angular/cdk/drag-drop";
 
@@ -8,9 +7,6 @@ import { DragDropModule } from "@angular/cdk/drag-drop";
         HomeComponent
     ],
     imports: [
-        RouterModule.forChild([
-            { path: "", component: HomeComponent }
-        ]),
         DragDropModule
     ],
     exports: [
