@@ -1,6 +1,7 @@
 import { Injectable } from "@angular/core";
 import { Router } from "@angular/router";
 import { BehaviorSubject, Observable } from "rxjs";
+import { PxService } from "./px.service";
 
 @Injectable({
     providedIn: 'root'
@@ -16,7 +17,8 @@ export class LoginService {
     public user: Observable<any | null>;
 
     constructor(
-        private router: Router
+        private router: Router,
+        private px: PxService
     ) {
         this.userSubject = new BehaviorSubject(JSON.parse(localStorage.getItem('user')!));
         this.user = this.userSubject.asObservable();
@@ -32,6 +34,9 @@ export class LoginService {
         if (loginResult) {
             localStorage.setItem('user', JSON.stringify(username));
             this.userSubject.next(username);
+
+            this.identifyApt(username);
+
             return username;
         }
 
@@ -51,5 +56,26 @@ export class LoginService {
         localStorage.removeItem('user');
         this.userSubject.next(null);
         this.router.navigate(['/login']);
+    }
+
+    private identifyApt(userName: string) {
+        const id = userName.substring(0, 2);
+
+        const userFields = {
+            //User Fields
+            "id": id, // Required for logged in app users
+            "userName": userName,
+            "firstName": "Nischayy",
+            "lastName": "Narula",
+        };
+
+        const accountFields = {
+            //Account Fields
+            "id": "GS", //Required
+            "name": "Gainsight",
+            "Program": "PX Training" // flat custom attributes
+        };
+
+        this.px.identify(userFields, accountFields);
     }
 }
