@@ -1,4 +1,6 @@
+import { CdkDragDrop } from "@angular/cdk/drag-drop";
 import { Component } from "@angular/core";
+import { PxService } from "../services/px.service";
 
 @Component({
     selector: 'px-widgets',
@@ -6,5 +8,11 @@ import { Component } from "@angular/core";
     styleUrls: ['./widgets.component.scss']
 })
 export class WidgetsComponent {
+
+    constructor(private px: PxService) { }
+
+    drop(event: CdkDragDrop<any>, widgetNumber: number) {
+        this.px.track('Drag_Widget_Event', { widgetNumber });
+    }
 
 }
