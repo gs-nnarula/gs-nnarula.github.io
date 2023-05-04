@@ -11,7 +11,7 @@ export class WidgetsComponent {
 
     constructor(private px: PxService) { }
 
-    drop(event: CdkDragDrop<any>, widgetNumber: number) {
+    release(event: CdkDragDrop<any>, widgetNumber: number) {
         this.px.track('Drag_Widget_Event', { widgetNumber });
     }
 
